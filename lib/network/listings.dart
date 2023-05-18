@@ -18,7 +18,7 @@ class RentalListing {
 
 List<RentalListing> rentalListings = [
   RentalListing(
-    image: '',
+    image: 'assets/apartment1.jpg',
     houseType: 'Apartment',
     noOfBedRms: 2,
     rentalPrice: 35000,
@@ -26,7 +26,7 @@ List<RentalListing> rentalListings = [
     noOfSchoolsNearBy: 12,
   ),
   RentalListing(
-    image: '',
+    image: 'assets/apartment2.jpg',
     houseType: 'Apartment',
     noOfBedRms: 3,
     rentalPrice: 60000,
@@ -34,7 +34,7 @@ List<RentalListing> rentalListings = [
     noOfSchoolsNearBy: 10,
   ),
   RentalListing(
-    image: '',
+    image: 'assets/bungalow.jpg',
     houseType: 'Bungalow',
     noOfBedRms: 5,
     rentalPrice: 120000,
@@ -42,7 +42,7 @@ List<RentalListing> rentalListings = [
     noOfSchoolsNearBy: 4,
   ),
   RentalListing(
-    image: '',
+    image: 'assets/cottage.jpg',
     houseType: 'Cottage',
     noOfBedRms: 4,
     rentalPrice: 10000,
@@ -50,7 +50,7 @@ List<RentalListing> rentalListings = [
     noOfSchoolsNearBy: 2,
   ),
   RentalListing(
-    image: '',
+    image: 'assets/apartment3.jpg',
     houseType: 'Apartment',
     noOfBedRms: 1,
     rentalPrice: 100000,

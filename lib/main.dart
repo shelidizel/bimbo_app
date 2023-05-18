@@ -1,3 +1,4 @@
+import 'package:bimbo_app/network/listings.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,25 +14,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
+       
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Bimbo App'),
     );
   }
 }
@@ -55,45 +43,138 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+  
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
+        
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
+        
         title: Text(widget.title),
       ),
       body: Center(
-        child: Image.asset('assets/apartment1.jpg'),
+        child: RentalListingWidget()
         ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      
+    );
+  }
+}
+
+class RentalListingWidget extends StatelessWidget {
+   RentalListingWidget({
+    super.key, 
+    this.noOfBedrms, 
+    this.noOfHospitals,
+    this.noOfSchools,
+    this.rentalPrice,
+    this.typeOfHouse});
+   int? noOfBedrms;
+   int? noOfHospitals;
+   int? noOfSchools;
+   String? typeOfHouse;
+   int? rentalPrice;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Column(
+        children: [
+          Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage(rentalListings[0].image!)),
+            ),
+             
+    
+          ),
+          SizedBox(height: 10,),
+          Container(
+            height: 86,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              color: Colors.red.withOpacity(.35),
+              borderRadius: BorderRadius.circular(8)
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                
+                  Text(rentalListings[0]
+                  .rentalPrice.toString(),
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600
+                  ),),
+                
+                  Row(
+                    children: [
+                      Text(rentalListings[0]
+                      .houseType ?? '',
+                      style: TextStyle(
+                        fontSize: 18,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400
+                
+                      ),),
+                
+                      SizedBox(
+                        width: 20,
+                      ),
+                
+                      Text(rentalListings[0].noOfBedRms.toString(),
+                       style: TextStyle(
+                        fontSize: 18,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400
+                
+                      ),),
+                
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text(rentalListings[0].noOfSchoolsNearBy.toString(),
+                       style: TextStyle(
+                        fontSize: 18,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400
+                
+                      ),),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text(rentalListings[0].noOfHospitalsNearBy.toString(),
+                       style: TextStyle(
+                        fontSize: 18,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400
+                
+                      ),),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      
+                
+                    ],
+                  )
+                ]
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
